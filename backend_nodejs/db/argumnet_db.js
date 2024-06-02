@@ -1,3 +1,10 @@
+// pg is the official PostgreSQL client for Node.js.
+// It provides methods to connect to a PostgreSQL database, execute SQL queries, and manage database transactions.
+// You use pg to interact with your PostgreSQL database directly from your Node.js application.
+
+
+
+
 
 // const { Pool } = require('pg');
 
