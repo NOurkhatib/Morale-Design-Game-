@@ -40,7 +40,7 @@ const styles = {
     flex: '0 0 25%', // Take up 1/4 of the screen
     padding: '20px',
     boxSizing: 'border-box',
-    backgroundColor: 'purple',
+    backgroundColor: '#7D7DB5',
     color: 'white',
     height: '100%',
   },
