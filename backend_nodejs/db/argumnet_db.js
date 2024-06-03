@@ -81,7 +81,7 @@ const pool = new Pool({
 });
 
 const saveArgument = async (player, character, argument, value, agree) => {
-  const query = 'INSERT INTO arguments (player, character, argument, value, agree) VALUES ($1, $2, $3, $4, $5) RETURNING *';
+  const query = 'INSERT INTO arguments_table (player, character, argument, value, agree) VALUES ($1, $2, $3, $4, $5) RETURNING *';
   const values = [player, character, argument, value, agree];
   try {
     const res = await pool.query(query, values);

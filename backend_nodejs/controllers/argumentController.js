@@ -24,10 +24,11 @@ const { saveArgument } = require('../db/argument_db');
 
 // Function to handle creating a new argument
 exports.createArgument = async (req, res) => {
-  const { text } = req.body; // Extract text from request body
-  const validationResult = argumentService.validateArgument(text); // Validate the argument text
+  const { player, character, argument, value, agree } = req.body; // Extract fields from request body
+  const validationResult = argumentService.validateArgument(argument); // Validate the argument text
 
-  if (validationResult.isValid) {
+  if (validationResult.isValid)
+  {
     try {
       const savedArgument = await saveArgument(text); // Save the argument to the database
       res.status(200).json({ message: 'Argument is valid and saved', argument: savedArgument }); // Send success response
