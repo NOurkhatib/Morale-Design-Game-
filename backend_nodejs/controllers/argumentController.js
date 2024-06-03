@@ -6,10 +6,9 @@ exports.createArgument = async (req, res) => {
   const { player, character, argument, value, agree } = req.body; // Extract fields from request body
   const validationResult = argumentService.validateArgument(argument); // Validate the argument text
 
-  if (validationResult.isValid)
-  {
+  if (validationResult.isValid) {
     try {
-      const savedArgument = await saveArgument(text); // Save the argument to the database
+      const savedArgument = await saveArgument(player, character, argument, value, agree); // Save the argument to the database
       res.status(200).json({ message: 'Argument is valid and saved', argument: savedArgument }); // Send success response
     } catch (error) {
       res.status(500).json({ message: 'Error saving argument to the database', error: error.message }); // Send error response
@@ -18,4 +17,3 @@ exports.createArgument = async (req, res) => {
     res.status(400).json({ message: 'Argument is invalid', errors: validationResult.errors }); // Send error response
   }
 };
-
