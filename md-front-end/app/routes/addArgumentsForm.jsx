@@ -101,7 +101,7 @@ const AddArgumentsForm = ({ value, setValue }) => {
 
 const styles = {
   form: {
-    backgroundColor: 'purple',
+    backgroundColor: '#7D7DB5',
     padding: '20px',
     borderRadius: '10px',
     color: 'white',
