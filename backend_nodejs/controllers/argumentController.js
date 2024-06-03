@@ -1,24 +1,3 @@
-// const argumentService = require('../services/argumentService');
-// const { saveArgument } = require('../db/argument_db');
-
-// // Function to handle creating a new argument
-// exports.createArgument = (req, res) => {
-//   // Extract text from request body
-//   const { text } = req.body; 
-
-//   // Validate the argument text
-//   const validationResult = argumentService.validateArgument(text); 
-
-//   if (validationResult.isValid) {
-
-//     // Send success response
-//     res.status(200).json({ message: 'Argument is valid' }); 
-//   } else {
-
-//     // Send error response
-//     res.status(400).json({ message: 'Argument is invalid', errors: validationResult.errors }); 
-//   }
-// };
 const argumentService = require('../services/argumentService');
 const { saveArgument } = require('../db/argument_db');
 
