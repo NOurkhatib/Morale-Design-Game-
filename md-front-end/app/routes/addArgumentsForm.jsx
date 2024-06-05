@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const players = {
   John: 'Teacher',
@@ -11,8 +11,15 @@ const players = {
 const AddArgumentsForm = ({ value, setValue }) => {
   const [selectedPlayer, setSelectedPlayer] = useState('');
   const [argument, setArgument] = useState('');
+  const [argumentsList, setArgumentsList] = useState([]);
 
-  const handleSubmit = async (event) => {
+  useEffect(() => {
+    // Load arguments from local storage on component mount
+    const storedArguments = JSON.parse(localStorage.getItem('argumentsList')) || [];
+    setArgumentsList(storedArguments.filter(arg => arg.value === value));
+  }, [value]);
+
+  const handleSubmit = (event) => {
     event.preventDefault();
 
     const formData = {
@@ -22,24 +29,15 @@ const AddArgumentsForm = ({ value, setValue }) => {
       value,
     };
 
-    try {
-      const response = await fetch('/Nour-ADD-Eindpoint-HERE', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+    // Store form data in local storage
+    const storedArguments = JSON.parse(localStorage.getItem('argumentsList')) || [];
+    storedArguments.push(formData);
+    localStorage.setItem('argumentsList', JSON.stringify(storedArguments));
 
-      if (response.ok) {
-        alert('Form submitted successfully!');
-        handleCancel();
-      } else {
-        alert('Failed to submit the form.');
-      }
-    } catch (error) {
-      alert('An error occurred while submitting the form.');
-    }
+    alert('Form submitted successfully!');
+    handleCancel();
+    // Update arguments list to display the new argument
+    setArgumentsList(storedArguments.filter(arg => arg.value === value));
   };
 
   const handleCancel = () => {
@@ -75,13 +73,13 @@ const AddArgumentsForm = ({ value, setValue }) => {
         <div style={styles.formGroup}>
           <label>
             Character:
-            <input type="text" value={players[selectedPlayer]} readOnly style={styles.input} />
+            <input type="text" value={players[selectedPlayer]} readOnly style={{ backgroundColor: '#7D7DB5', color: 'white', padding: '5px', border: 'none', fontWeight: 'bold', fontSize: 18 }} />
           </label>
         </div>
         <div style={styles.formGroup}>
           <label>
             Argument:
-            <input type="text" value={argument} onChange={(e) => setArgument(e.target.value)} style={styles.input} />
+            <textarea type="text" value={argument} onChange={(e) => setArgument(e.target.value)} style={styles.argumentInput} />
           </label>
         </div>
         <div style={styles.formGroup}>
@@ -91,10 +89,26 @@ const AddArgumentsForm = ({ value, setValue }) => {
           </label>
         </div>
         <div style={styles.buttonGroup}>
-          <button type="submit" style={styles.button}>Confirm Argument</button>
-          <button type="button" onClick={handleCancel} style={styles.button}>Cancel</button>
+          <button type="submit" style={styles.button}>
+            Confirm Argument
+          </button>
+          <button type="button" onClick={handleCancel} style={styles.button}>
+            Cancel
+          </button>
         </div>
       </form>
+
+      {/* Display arguments with the same value */}
+      <div style={styles.argumentsList}>
+        <h3> {value} Arguments: </h3>
+        <ul>
+          {argumentsList.map((arg, index) => (
+            <li key={index} style={styles.argumentItem}>
+              <strong>{arg.player} ({arg.character}):</strong> {arg.argument}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
@@ -115,6 +129,14 @@ const styles = {
     margin: '5px 0',
     boxSizing: 'border-box',
   },
+  argumentInput: { /* Updated style for argument input */
+    width: '100%',
+    height: '100px', /* Set a height for multiple lines */
+    padding: '8px',
+    margin: '5px 0',
+    boxSizing: 'border-box',
+    resize: 'vertical', /* Allow user to resize the textarea */
+  },
   buttonGroup: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -126,6 +148,18 @@ const styles = {
     border: 'none',
     borderRadius: '5px',
     cursor: 'pointer',
+  },
+  argumentsList: {
+    marginTop: '20px',
+    backgroundColor: '#7D7DB5',
+    padding: '20px',
+    borderRadius: '10px',
+    color: 'white',
+    maxHeight: '30vh', // Ensure the argument list has a max height
+    overflowY: 'auto', // Add scroll if the content overflows
+  },
+  argumentItem: {
+    marginBottom: '10px',
   },
 };
 

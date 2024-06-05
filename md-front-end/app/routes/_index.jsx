@@ -32,7 +32,7 @@ export default function Index() {
 
 const styles = {
   container: {
-    display: 'flex',
+    display: 'flex', // Ensure flexbox is enabled
     flexDirection: 'row',
     height: '100vh',
   },
@@ -43,12 +43,13 @@ const styles = {
     backgroundColor: '#7D7DB5',
     color: 'white',
     height: '100%',
+    overflow: 'auto', // Ensure the container can scroll if content overflows
   },
   boardContainer: {
     flex: '1', // Take up the remaining space
-    padding: '20px',
+    padding: '10px',
     boxSizing: 'border-box',
     height: '100%',
-    
+    marginLeft: '30px',
   },
 };
