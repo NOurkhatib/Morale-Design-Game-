@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Morale Design Game - Backend NodeJS</title>
-</head>
+
 <body>
   <h1>Morale Design Game - Backend NodeJS</h1>
   <p>This directory contains the backend Node.js application for the Morale Design Game.</p>
