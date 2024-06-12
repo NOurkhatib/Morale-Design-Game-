@@ -1,6 +1,4 @@
-  <title>Morale Design Game - Backend NodeJS</title>
-
-<body>
+ <body>
   <h1>Morale Design Game - Backend NodeJS</h1>
   <p>This directory contains the backend Node.js application for the Morale Design Game.</p>
 
