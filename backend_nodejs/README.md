@@ -1,46 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Morale Design Game - Backend NodeJS</title>
+</head>
+<body>
+  <h1>Morale Design Game - Backend NodeJS</h1>
+  <p>This directory contains the backend Node.js application for the Morale Design Game.</p>
 
-Sure, here is the README content with commands inside HTML tags for better appearance on GitHub:
+  <h2>Structure</h2>
+  <ul>
+    <li><strong>config</strong>: Configuration files</li>
+    <li><strong>controllers</strong>: Request handlers</li>
+    <li><strong>db</strong>: Database setup and models</li>
+    <li><strong>middlewares</strong>: Middleware functions</li>
+    <li><strong>services</strong>: Business logic</li>
+  </ul>
 
-Morale Design Game - Backend NodeJS
-This directory contains the backend Node.js application for the Morale Design Game.
+  <h2>Getting Started</h2>
 
-Structure
-config: Configuration files
-controllers: Request handlers
-db: Database setup and models
-middlewares: Middleware functions
-services: Business logic
-Getting Started
-Prerequisites
-Node.js
-npm
-Installation
-Clone the repository:
+  <h3>Prerequisites</h3>
+  <ul>
+    <li>Node.js</li>
+    <li>npm</li>
+  </ul>
 
-html
-Copy code
-<pre><code>git clone https://github.com/NOurkhatib/Morale-Design-Game-.git</code></pre>
-Navigate to the backend directory:
+  <h3>Installation</h3>
+  <ol>
+    <li>Clone the repository:
+      <pre><code>git clone https://github.com/NOurkhatib/Morale-Design-Game-.git</code></pre>
+    </li>
+    <li>Navigate to the backend directory:
+      <pre><code>cd Morale-Design-Game-/backend_nodejs</code></pre>
+    </li>
+    <li>Install dependencies:
+      <pre><code>npm install</code></pre>
+    </li>
+  </ol>
 
-html
-Copy code
-<pre><code>cd Morale-Design-Game-/backend_nodejs</code></pre>
-Install dependencies:
+  <h3>Running the Application</h3>
+  <p>To start the server:</p>
+  <pre><code>npm start</code></pre>
 
-html
-Copy code
-<pre><code>npm install</code></pre>
-Running the Application
-To start the server:
+  <h3>Configuration</h3>
+  <p>Modify the configuration files in the <code>config</code> directory as needed.</p>
 
-html
-Copy code
-<pre><code>npm start</code></pre>
-Configuration
-Modify the configuration files in the config directory as needed.
+  <h2>Contributing</h2>
+  <p>Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.</p>
 
-Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-License
-MIT
+  <h2>License</h2>
+  <p><a href="LICENSE">MIT</a></p>
+</body>
+</html>
