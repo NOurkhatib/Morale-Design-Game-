@@ -1,27 +1,3 @@
-// CREATE TABLE arguments_table (
-//     id SERIAL PRIMARY KEY,
-//     session_id VARCHAR(50),
-//     player VARCHAR(50),
-//     character VARCHAR(50),
-//     argument TEXT,
-//     value TEXT,
-//     agree BOOLEAN
-//   );
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------
-
-// const { Pool } = require('pg');
-
-// // Create a new pool instance to manage connections to the PostgreSQL database
-// const pool = new Pool({
-//   user: 'postgres',          // Database user
-//   host: 'localhost',         // Database host
-//   database: 'mydatabase',    // Name of the database
-//   password: 'yourpassword',  // Password for the database user
-//   port: 5432,                // Port number (default is 5432)
-// });
-
-
 const { Pool } = require('pg');
 require('dotenv').config();
 
