@@ -9,9 +9,9 @@ const pool = new Pool({
   port: process.env.DB_PORT,
 });
 
-const saveArgument = async (player, character, argument, value, agree) => {
-  const query = 'INSERT INTO arguments_table (player, character, argument, value, agree) VALUES ($1, $2, $3, $4, $5) RETURNING *';
-  const values = [player, character, argument, value, agree];
+const saveArgument = async (session_id , player, character, argument, value, agree) => {
+  const query = 'INSERT INTO arguments_table (session_id, player, character, argument, value, agree) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *';
+  const values = [session_id, player, character, argument, value, agree];
   try {
     const res = await pool.query(query, values);
     return res.rows[0];
@@ -21,6 +21,21 @@ const saveArgument = async (player, character, argument, value, agree) => {
   }
 };
 
+const getArgumentsBySessionId = async (sessionId) => {
+  const query = 'SELECT * FROM arguments_table WHERE session_id = $1';
+  const values = [sessionId];
+  try {
+    const res = await pool.query(query, values);
+    return res.rows;
+  } catch (err) {
+    console.error('Error executing query', err.stack);
+    throw err;
+  }
+};
+
+
+
 module.exports = {
   saveArgument,
+  getArgumentsBySessionId,
 };

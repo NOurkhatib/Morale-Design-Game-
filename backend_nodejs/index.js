@@ -17,6 +17,11 @@ app.use(express.json());
 // When a POST request is received at this endpoint, the `createArgument` function from `argumentController` is called to handle the request.
 app.post('/api/arguments', argumentController.createArgument);
 
+
+// new route for retrieving arguments by session ID
+app.get('/api/arguments/:sessionId', argumentController.getArgumentsBySessionId);
+
+
 // Set the `PORT` variable to the value of the environment variable `PORT` if it exists; 
 // otherwise, default to 3000. This is useful for configuring the server port in different environments.
 const PORT = process.env.PORT || 3000;
