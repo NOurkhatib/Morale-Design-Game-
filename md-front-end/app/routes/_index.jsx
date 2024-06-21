@@ -5,8 +5,8 @@ import AddArgumentsForm from './addArgumentsForm';
 
 export const meta = () => {
   return [
-    { title: 'New Remix App' },
-    { name: 'description', content: 'Welcome to Remix!' },
+    { title: 'Moral Design Game Digital Version' },
+    { name: 'description', content: 'Welcome to the digital version of the game!' },
   ];
 };
 
@@ -21,10 +21,10 @@ export default function Index() {
   return (
     <div style={styles.container}>
       <div style={styles.formContainer}>
-        <AddArgumentsForm value={value} setValue={setValue} />
+        <AddArgumentsForm value={value} setValue={setValue} /> {/* render the form with the data (value) from the state*/}
       </div>
       <div style={styles.boardContainer}>
-        <SVGBoard onClickSlice={handleClickSlice} />
+        <SVGBoard onClickSlice={handleClickSlice} />   {/* render the board and get the clicked slice and save it to the state */}
       </div>
     </div>
   );

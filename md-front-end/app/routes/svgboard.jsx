@@ -3,30 +3,26 @@ import React, { useState } from 'react';
 const SVGBoard = ({ onClickSlice }) => {
   const [popup, setPopup] = useState({ visible: false, x: 0, y: 0 });
 
-  const handleMouseEnter = (event) => {
-    const { clientX, clientY } = event;
-    setPopup({ visible: true, x: clientX, y: clientY });
-  };
 
-  const handleMouseMove = (event) => {
-    if (popup.visible) {
-      const { clientX, clientY } = event;
-      setPopup({ visible: true, x: clientX, y: clientY });
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setPopup({ visible: false, x: 0, y: 0 });
-  };
+ 
 
   return (
     <div>
+       {/* Creating the SVG board here you can think of the Viewbox as the zoom level on the whole board */}
       <svg id="svgBoard" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-        {/* Define the slices with click events */}
-        
+       
+         {/* saving the state so that it would be sent to addArguments form */}
         <a href="#" onClick={(event) => onClickSlice(event, 'Equality and Justice Disagree')}>
+          {/*  path is how we split the svg into multiple parts  and here d defines the path data its where the logic of the drawing is
+          M100,100 is a command to move to the point x=100 y=100
+          L100,0 means draw a line from where we are (currently 100,100) to 100,0
+          A100,100 0 0,1 170.7,29.3 A stands for an arc 100,100 is the radius
+          the following 0 stands for the rotation 
+          0,1 and here we are defining the degrees and direction 0 stands for 180 degrees or less and 1 means the arc is in clockwise direction
+           170.7,29.3 is the destination or the point where we end the arc
+           Z is a command to close the shape by drawing a line back to the starting point */}
           <path
-            d="M100,100 L100,0 A100,100 0 0,1 170.7,29.3 L100,100 Z"
+            d="M100,100 L100,0 A100,100 0 0,1 170.7,29.3 Z"
             fill="#ACD5AB"
             id="slice1a"
             stroke="white"
@@ -116,6 +112,7 @@ const SVGBoard = ({ onClickSlice }) => {
           <text x="40" y="-3" fontSize="6" fill="#7A4A7B" transform="rotate(-30, 75, 40)" fontFamily='cursive'>Independence</text>
         </a>
 
+        {/* The middle circle starts from here*/} 
         <circle cx="100" cy="100" r="50" fill="none" stroke="white" strokeWidth="1" />
         <a href="#" onClick={(event) => onClickSlice(event, 'Equality and Justice Agree')}>
           <path
@@ -198,45 +195,17 @@ const SVGBoard = ({ onClickSlice }) => {
           <text x="90" y="68" fontSize="3" fill="white" transform="rotate(-90, 90, 60)" fontFamily='cursive'>Agree</text>
         </a>
 
-        {/* Inner circle */}
+        {/* the Central circles */}
         <circle cx="100" cy="100" r="20" fill="white" style={{ stroke: 'white', strokeWidth: 2 }} />
         <circle cx="100" cy="100" r="12" fill="#7A4A7B" style={{ stroke: 'white', strokeWidth: 2 }} />
         <text x="91" y="99" fontSize={3} fill="white">Personal value </text>
         <text x="93" y="104" fontSize={3} fill="white">dictionary </text>
       </svg>
-      {/* Render the popup */}
-      {popup.visible && (
-        <div
-          style={{
-            position: 'absolute',
-            left: popup.x,
-            top: popup.y,
-            background: '#7D7DB5',
-            padding: '5px',
-            height: '150px',
-            width: '300px',
-            color: 'white'
-          }}
-        >
-          Arguments will be here
-        </div>
-      )}
+      {/* for rendering the popup */}
+   
     </div>
   );
 };
 
 export default SVGBoard;
 
-/*
-        <text
-            x="125"
-            y="40"
-            textAnchor="middle"
-            fill="white"
-            onMouseEnter={handleMouseEnter}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-          >
-            0
-          </text>
-          */
