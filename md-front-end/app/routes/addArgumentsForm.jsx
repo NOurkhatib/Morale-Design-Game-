@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+// some mock palyers that act as a placeholder untill adding players dynamicly is implemtned (select players and random players feature)
 const players = {
   John: 'Teacher',
   Chris: 'Journalist',
@@ -14,7 +15,7 @@ const AddArgumentsForm = ({ value, setValue }) => {
   const [argumentsList, setArgumentsList] = useState([]);
 
   useEffect(() => {
-    // Load arguments from local storage on component mount
+    // Load arguments from local storage on component mount untill back-end connection is establised 
     const storedArguments = JSON.parse(localStorage.getItem('argumentsList')) || [];
     setArgumentsList(storedArguments.filter(arg => arg.value === value));
   }, [value]);
@@ -29,7 +30,7 @@ const AddArgumentsForm = ({ value, setValue }) => {
       value,
     };
 
-    // Store form data in local storage
+    // Store form data in local storage for now untill backend connection is established
     const storedArguments = JSON.parse(localStorage.getItem('argumentsList')) || [];
     storedArguments.push(formData);
     localStorage.setItem('argumentsList', JSON.stringify(storedArguments));
