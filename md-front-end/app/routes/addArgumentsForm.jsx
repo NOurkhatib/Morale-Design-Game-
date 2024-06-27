@@ -39,6 +39,7 @@ const AddArgumentsForm = ({ value, setValue }) => {
     handleCancel();
     // Update arguments list to display the new argument
     setArgumentsList(storedArguments.filter(arg => arg.value === value));
+    window.location.reload(); // Refresh the page to update counts
   };
 
   const handleCancel = () => {
